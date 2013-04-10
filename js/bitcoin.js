@@ -40,11 +40,13 @@
     onsuccess: function(rr) {
       var $rr = document.querySelectorAll('.rates')[0];
       if($rr) {
-        $rr.innerHTML = _.foldl(rr, function($rr, r, cur) {
-          return $rr + App.render(App.template, _.extend(r, {
-            currency: cur
-          }));
-        }, '');
+        $rr.innerHTML = _.chain(rr)
+          .map(function(r, cur) { return _.extend(r, {currency: cur}); })
+          .sortBy(function(r) { return r.currency; })
+          .foldl(function($rr, r) {
+            return $rr + App.render(App.template, r);
+          }, '')
+          .value();
       }
       else {
         document.write('ERROR');
