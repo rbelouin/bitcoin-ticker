@@ -2,13 +2,13 @@
   var App = {
     initialize: function() {
       this.$container = document.querySelectorAll('.rates')[0];
-      this.template   = ['<tr>',
-        '<td class="cur b-bold">{currency} ({symbol})</td>',
-        '<td class="15m">{15m}</td>',
-        '<td class="last">{last}</td>',
-        '<td class="buy">{buy}</td>',
-        '<td class="sell">{sell}</td>',
-        '<td class="24h">{24h}</td>',
+      this.template   = ['<tr class="b-row">',
+        '<td class="currency b-cell b-cell__bold">{currency} ({symbol})</td>',
+        '<td class="15m b-cell b-cell__num">{15m}</td>',
+        '<td class="last b-cell b-cell__num">{last}</td>',
+        '<td class="buy b-cell b-cell__num">{buy}</td>',
+        '<td class="sell b-cell b-cell__num">{sell}</td>',
+        '<td class="24h b-cell b-cell__num">{24h}</td>',
       '</tr>'].join('');
 
       this.data(App.onsuccess, App.onerror);
